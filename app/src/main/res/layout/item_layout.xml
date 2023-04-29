@@ -1,23 +1,38 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="wrap_content">
+    android:layout_height="wrap_content"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:orientation="vertical">
 
-    <ImageView
-        android:id="@+id/item_image"
-        android:layout_width="50dp"
-        android:layout_height="50dp"
-        android:layout_margin="8dp"
-        android:src="@drawable/ic_launcher_background" />
+    <com.google.android.material.card.MaterialCardView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:elevation="@dimen/_8sdp"
+        android:layout_margin="@dimen/_3sdp"
+        app:cardCornerRadius="@dimen/_8sdp"
+        android:backgroundTint="@color/md_theme_dark_secondary"
+        >
 
-    <TextView
-        android:id="@+id/item_text"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:textSize="18sp"
-        android:text="I love Android"
-        android:textStyle="bold"
-        android:textColor="@android:color/black"
-        android:layout_gravity="center_vertical"/>
+        <TextView
+            android:id="@+id/item_text"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textSize="@dimen/_15ssp"
+            android:textStyle="bold"
+            android:textColor="@color/md_theme_light_onPrimary"
+            android:gravity="center_horizontal"
+            android:layout_gravity="center_horizontal"
+            />
+
+        <ImageView
+            android:id="@+id/item_image"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/_200sdp"
+            android:baselineAlignBottom="true"
+            />
+
+    </com.google.android.material.card.MaterialCardView>
 
 </LinearLayout>

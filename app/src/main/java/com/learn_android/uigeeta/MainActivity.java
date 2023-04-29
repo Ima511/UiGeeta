@@ -23,16 +23,10 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
 
         List<String> data = new ArrayList<>();
-        data.add("Item 1");
-        data.add("Item 2");
-        data.add("Item 3");
-        data.add("Item 4");
-        data.add("Item 5");
-        data.add("Item 6");
-        data.add("Item 7");
-        data.add("Item 8");
-        data.add("Item 9");
-        data.add("Item 10");
+
+        for(int i =1 ;i <= 18; i++){
+            data.add("Chapter " + i);
+        }
 
         RecyclerView recyclerView = findViewById(R.id.recycler_view);
         recyclerView.setLayoutManager(new GridLayoutManager(this, 2));

@@ -5,6 +5,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.recyclerview.widget.RecyclerView;
 
@@ -25,7 +26,17 @@ public class MyAdapter extends RecyclerView.Adapter<MyAdapter.ViewHolder> {
 
     @Override
     public void onBindViewHolder(ViewHolder holder, int position) {
-        holder.bindData(mData.get(position), R.drawable.ic_launcher_background);
+        holder.bindData(mData.get(position), R.drawable.lord_krihna);
+
+        holder.mImageView.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                // perform any action you want to do when the image is clicked
+
+                Toast.makeText(v.getContext(), "Clicked on " + mData.get(position), Toast.LENGTH_SHORT).show();
+            }
+        });
+
     }
 
 
