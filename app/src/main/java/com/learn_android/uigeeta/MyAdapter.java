@@ -1,5 +1,7 @@
 package com.learn_android.uigeeta;
 
+import android.content.Intent;
+import android.os.Parcelable;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -9,6 +11,7 @@ import android.widget.Toast;
 
 import androidx.recyclerview.widget.RecyclerView;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class MyAdapter extends RecyclerView.Adapter<MyAdapter.ViewHolder> {
@@ -33,7 +36,12 @@ public class MyAdapter extends RecyclerView.Adapter<MyAdapter.ViewHolder> {
             public void onClick(View v) {
                 // perform any action you want to do when the image is clicked
 
-                Toast.makeText(v.getContext(), "Clicked on " + mData.get(position), Toast.LENGTH_SHORT).show();
+//                Toast.makeText(v.getContext(), "Clicked on " + mData.get(position), Toast.LENGTH_SHORT).show();
+                Intent intent = new Intent(v.getContext(),SloakActivity.class);
+                intent.putExtra("chapter_data",mData.get(position));
+                intent.putExtra("position",position);
+                intent.putStringArrayListExtra("myList", (ArrayList<String>) mData);
+                v.getContext().startActivity(intent);
             }
         });
 

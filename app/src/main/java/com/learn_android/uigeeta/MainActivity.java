@@ -2,6 +2,7 @@ package com.learn_android.uigeeta;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.view.MenuItemCompat;
+import androidx.core.widget.NestedScrollView;
 import androidx.recyclerview.widget.GridLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
@@ -17,10 +18,18 @@ import java.util.List;
 
 public class MainActivity extends AppCompatActivity {
 
+    private static final String SCROLL_POSITION_KEY = "scroll_position";
+    private NestedScrollView mScrollView;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+        mScrollView = findViewById(R.id.scroll_view);
+        if (savedInstanceState != null) {
+            int scrollPosition = savedInstanceState.getInt(SCROLL_POSITION_KEY);
+            mScrollView.post(() -> mScrollView.scrollTo(0, scrollPosition));
+        }
 
         List<String> data = new ArrayList<>();
 
@@ -32,6 +41,12 @@ public class MainActivity extends AppCompatActivity {
         recyclerView.setLayoutManager(new GridLayoutManager(this, 2));
         MyAdapter adapter = new MyAdapter(data); // data is a List<String> with the data to display
         recyclerView.setAdapter(adapter);
+    }
+
+    @Override
+    protected void onSaveInstanceState(Bundle outState) {
+        super.onSaveInstanceState(outState);
+        outState.putInt(SCROLL_POSITION_KEY, mScrollView.getScrollY());
     }
 
     @Override
