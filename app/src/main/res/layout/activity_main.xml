@@ -20,17 +20,21 @@
             android:layout_height="wrap_content"
             android:theme="@style/ThemeOverlay.MaterialComponents.Dark.ActionBar"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent">
+            app:layout_constraintTop_toTopOf="parent"
+            android:padding="@dimen/_2sdp"
+
+            >
 
             <com.google.android.material.appbar.MaterialToolbar
                 android:id="@+id/topAppBar"
                 android:layout_width="match_parent"
                 android:layout_height="?attr/actionBarSize"
                 android:background="@color/md_theme_light_primaryContainer"
-                app:menu="@menu/main_menu"
                 app:title="Geeta"
                 app:titleCentered="true"
-                app:titleTextColor="@color/md_theme_dark_errorContainer" />
+                app:titleTextColor="@color/md_theme_dark_errorContainer"
+
+                />
 
         </com.google.android.material.appbar.AppBarLayout>
 

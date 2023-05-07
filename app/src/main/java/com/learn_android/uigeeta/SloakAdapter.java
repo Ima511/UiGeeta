@@ -30,8 +30,7 @@ public class SloakAdapter extends RecyclerView.Adapter<SloakAdapter.ViewHolder> 
 
     @Override
     public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
-
-//holder.hindiText.setText(mData.get(position));
+        String sloak = "श्लोक";
         Log.d("mData",mData + "");
 
         String input = mData.get(position);
@@ -43,17 +42,12 @@ public class SloakAdapter extends RecyclerView.Adapter<SloakAdapter.ViewHolder> 
 
 // Extract the Hindi translation
         String hindiTranslation = input.substring(index + 4);
-        holder.textViewSanskrit.setText(sanskritText.substring(0,sanskritText.length()-2));
+        holder.textViewSanskrit.setText(sloak + " "+ (position + 1)+"\n"+ sanskritText.substring(0,sanskritText.length()-2));
         String hindi =   hindiTranslation.replaceAll("[a-zA-Z]+", "").replaceAll("\\d+", "").replace("©" , "").replace(",", "");
-//        hindiText.setText(hindi.trim().substring(8));
         System.out.println("Sanskrit text: " + sanskritText);
         System.out.println("Hindi translation: " + hindiTranslation);
         holder.textViewHindi.setText(hindi.trim().substring(8));
 
-//        holder.textViewSanskrit.setText(mData.get(position));
-//Log.d("mDataAtPosition",mData.get(position));
-//
-//holder.textViewHindi.setText(mData.get(position));
     }
 
     @Override

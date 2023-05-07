@@ -14,6 +14,8 @@ import android.view.View;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.google.android.material.appbar.MaterialToolbar;
+
 import java.util.ArrayList;
 import java.util.List;
 
@@ -27,6 +29,10 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         mScrollView = findViewById(R.id.scroll_view);
+        String geeta = "श्रीमद् भगवद् गीता";
+        MaterialToolbar materialToolbar = (MaterialToolbar) findViewById(R.id.topAppBar);
+        materialToolbar.setTitleTextAppearance(this, R.style.MyMaterialToolbarStyle);
+        materialToolbar.setTitle(geeta);
         if (savedInstanceState != null) {
             int scrollPosition = savedInstanceState.getInt(SCROLL_POSITION_KEY);
             mScrollView.post(() -> mScrollView.scrollTo(0, scrollPosition));

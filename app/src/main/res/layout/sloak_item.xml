@@ -3,7 +3,9 @@
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    android:orientation="vertical">
+    android:orientation="vertical"
+    android:padding="@dimen/_5sdp"
+    >
 
 <com.google.android.material.card.MaterialCardView
     android:layout_width="wrap_content"
@@ -15,6 +17,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:textSize="@dimen/_15ssp"
+            android:padding="@dimen/_5sdp"
             android:textStyle="bold"
             android:textColor="@color/black"
             android:gravity="center_horizontal"
@@ -36,7 +39,8 @@
             android:layout_height="wrap_content"
             android:textSize="@dimen/_15ssp"
             android:textStyle="bold"
-            android:textColor="@color/md_theme_light_onPrimary"
+           android:padding="@dimen/_5sdp"
+           android:textColor="@color/md_theme_light_onPrimary"
             android:gravity="center_horizontal"
             android:layout_gravity="center_horizontal"
             />

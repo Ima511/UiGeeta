@@ -30,7 +30,6 @@ public class MyAdapter extends RecyclerView.Adapter<MyAdapter.ViewHolder> {
 
     @Override
     public void onBindViewHolder(ViewHolder holder, int position) {
-//        holder.bindData(mData.get(position), R.drawable.lord_krihna);
         holder.mTextView.setText(mData.get(position));
         holder.mImageView.setImageResource(R.drawable.lord_krihna);
         holder.mImageView.setOnClickListener(new View.OnClickListener() {

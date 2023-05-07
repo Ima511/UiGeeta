@@ -7,8 +7,12 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import android.content.Intent;
+import android.graphics.PorterDuff;
+import android.graphics.Typeface;
+import android.graphics.drawable.Drawable;
 import android.os.Bundle;
 import android.util.Log;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.TextView;
@@ -36,6 +40,17 @@ public class SloakActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_sloak);
         mScrollViewSloak = findViewById(R.id.scroll_view_sloak);
+        Typeface boldTypeface = Typeface.defaultFromStyle(Typeface.BOLD);
+
+//        String[] chapterNames = {"Arjuna Vishada Yoga", "Sankhya Yoga", "Karma Yoga", "Jnana Yoga", "Karma Vairagya Yoga",
+//                "Abhyasa Yoga", "Dhyana Yoga", "Jnana Vijana Yoga", "Aksara Parabrahma Yoga", "Raja Vidya Raja Guhya Yoga",
+//                "Vibhuti Yoga", "Visvarupa Darshana Yoga", "Bhakti Yoga", "Ksetra-Ksetrajna Vibhaga Yoga",
+//                "Purushottama Prapti Yoga", "Daivasura Sampad Vibhaga Yoga", "Sraddhatraya Vibhaga Yoga", "Moksha Upadesa Yoga"};
+//
+        String[] chapterNames = {"अर्जुन विषाद योग", "सांख्य योग", "कर्म योग", "ज्ञान योग", "कर्म-वैराग्य योग",
+                "अभ्यास योग", "ध्यान योग", "ज्ञान विज्ञान योग", "अक्षर परब्रह्म योग", "राज विद्या राज गुह्य योग",
+                "विभूति योग", "विश्वरूप दर्शन योग", "भक्ति योग", "क्षेत्र-क्षेत्रज्ञ विभाग योग",
+                "पुरुषोत्तम प्राप्ति योग", "दैवासुर सम्पद् विभाग योग", "श्रद्धात्रय विभाग योग", "मोक्ष उपदेश योग"};
 
 
         if (savedInstanceState != null) {
@@ -44,31 +59,23 @@ public class SloakActivity extends AppCompatActivity {
         }
         MaterialToolbar materialToolbar = (MaterialToolbar) findViewById(R.id.topAppBar);
         int value = getIntent().getIntExtra("chapter_number",0);
-        materialToolbar.setTitle(value+" ");
-//        Log.d("Arraylist", myArrayList.get(position));
-//        Toast.makeText(this, value, Toast.LENGTH_SHORT).show();
+        materialToolbar.setTitle(chapterNames[value-1]+" ");
+        materialToolbar.setTitleTextAppearance(this, R.style.MyMaterialToolbarStyle);
 
 
-// Implement this code when data extraction completed and get the sloakes in sanskrit and hindi.
-//        int index = input.indexOf("।।");
-//
-//// Extract the Sanskrit text
-//        String sanskritText = input.substring(0, index + 2);
-//
-//// Extract the Hindi translation
-//        String hindiTranslation = input.substring(index + 4);
-//        textView.setText(sanskritText.substring(0,sanskritText.length()-2));
-//        String hindi =   hindiTranslation.replaceAll("[a-zA-Z]+", "").replaceAll("\\d+", "").replace("©" , "").replace(",", "");
-////        hindiText.setText(hindi.trim().substring(8));
-//        System.out.println("Sanskrit text: " + sanskritText);
-//        System.out.println("Hindi translation: " + hindiTranslation);
+        setSupportActionBar(materialToolbar);
+        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+
+        // Set the color of the up button
+        final Drawable upArrow = getResources().getDrawable(R.drawable.ic_baseline_arrow_back_24);
+        upArrow.setColorFilter(getResources().getColor(android.R.color.black), PorterDuff.Mode.SRC_ATOP);
+        getSupportActionBar().setHomeAsUpIndicator(upArrow);
 
         RecyclerView recyclerView = findViewById(R.id.recycler_view_two);
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
         SloakAdapter adapter = new SloakAdapter(slokasArray()); // data is a List<String> with the data to display
         recyclerView.setAdapter(adapter);
-//MyAdapter adapter2 = new MyAdapter(slokasArray());
-//recyclerView.setAdapter(adapter2);
+
     }
 
     @Override
@@ -113,5 +120,17 @@ public class SloakActivity extends AppCompatActivity {
         Log.d("sb",sb + " ");
         return sb;
     }
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        int id = item.getItemId();
+
+        if (id == android.R.id.home) { // Check if the up button was clicked
+            onBackPressed(); // Navigate to the previous activity
+            return true;
+        }
+
+        return super.onOptionsItemSelected(item);
+    }
+
 
 }
