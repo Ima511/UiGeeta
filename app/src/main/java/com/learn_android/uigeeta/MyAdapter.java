@@ -9,6 +9,7 @@ import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import androidx.core.content.ContextCompat;
 import androidx.recyclerview.widget.RecyclerView;
 
 import java.util.ArrayList;
@@ -29,18 +30,14 @@ public class MyAdapter extends RecyclerView.Adapter<MyAdapter.ViewHolder> {
 
     @Override
     public void onBindViewHolder(ViewHolder holder, int position) {
-        holder.bindData(mData.get(position), R.drawable.lord_krihna);
-
+//        holder.bindData(mData.get(position), R.drawable.lord_krihna);
+        holder.mTextView.setText(mData.get(position));
+        holder.mImageView.setImageResource(R.drawable.lord_krihna);
         holder.mImageView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                // perform any action you want to do when the image is clicked
-
-//                Toast.makeText(v.getContext(), "Clicked on " + mData.get(position), Toast.LENGTH_SHORT).show();
                 Intent intent = new Intent(v.getContext(),SloakActivity.class);
-                intent.putExtra("chapter_data",mData.get(position));
-                intent.putExtra("position",position);
-                intent.putStringArrayListExtra("myList", (ArrayList<String>) mData);
+                intent.putExtra("chapter_number", position+1);
                 v.getContext().startActivity(intent);
             }
         });
@@ -65,7 +62,9 @@ public class MyAdapter extends RecyclerView.Adapter<MyAdapter.ViewHolder> {
 
         public void bindData(String data, int imageResource) {
             mTextView.setText(data);
-            mImageView.setImageResource(imageResource);
+
+            mImageView.setImageDrawable(ContextCompat.getDrawable(itemView.getContext(), imageResource));
+
         }
     }
 

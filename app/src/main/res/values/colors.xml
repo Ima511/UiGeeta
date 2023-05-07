@@ -70,4 +70,18 @@
 <color name="md_theme_dark_outlineVariant">#49454E</color>
 <color name="md_theme_dark_scrim">#000000</color>
 <color name="CustomColor1">#773555</color>
+    <color name="CustomColor2_light">#3c6a00</color>
+    <color name="onCustomColor2_light">#ffffff</color>
+    <color name="CustomColor2Container_light">#96fc01</color>
+    <color name="onCustomColor2Container_light">#0e2000</color>
+    <color name="CustomColor2_dark">#83dd00</color>
+    <color name="onCustomColor2_dark">#1d3700</color>
+    <color name="CustomColor2Container_dark">#2c5000</color>
+    <color name="onCustomColor2Container_dark">#d1ff9f</color>
+
+
+
+
+
+
 </resources>
